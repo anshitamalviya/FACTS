@@ -1,28 +1,3 @@
-#cps with gan plus pseudo discriminator epoch to 45 percent...
-#Supervised fuzzy boundary loss (FB loss) plus unlabeled FB loss (Weight percent for both - 1.0)
-#ACDC all slices
-#changing dataset to ACDC
-#ISSUE: Performance drop (0.88→0.80) with more unlabeled data (1312 vs 396 slices)
-#ROOT CAUSE: Same epoch length (~11 iter) but 4.5x more unlabeled data → each sample seen 4.5x less frequently
-#This leads to less stable pseudo-labels early in training, degrading performance
-#FIXES: 1) Reduce pseudo_disc_start_frac to 0.35 (earlier pseudo-label learning)
-#       2) Increase confidence threshold to 0.90 (stricter filtering)
-#       3) Consider EMA for pseudo-labels or reduce unlabeled pool to match original ratio
-
-#Model 1 metrics : [array([0.87615203, 0.78965103, 1.5166535 , 0.342132  ]), array([0.86771106, 0.76889159, 1.37705662, 0.5420708 ]), array([0.92166006, 0.86015873, 3.49008382, 0.8566796 ])]
-#Model 2 metrics : [array([0.88233506, 0.79540623, 1.50663321, 0.52731783]), array([0.86806886, 0.76903107, 2.96914554, 0.64727138]), array([0.9245088 , 0.86360893, 3.62016441, 0.70540735])]
-#Overall average metrics : [array([0.87924355, 0.79252863, 1.51164336, 0.43472491]), array([0.86788996, 0.76896133, 2.17310108, 0.59467109]), array([0.92308443, 0.86188383, 3.55512412, 0.78104348])]
-#Average overall metric: [0.89007265 0.80779126 2.41328952 0.60347983]
-
-#21 labeled_num
-#Model 1 metrics : [array([0.90400613, 0.83088226, 1.3062217 , 0.39515458]), array([0.88930181, 0.8023431 , 1.14657006, 0.4120039 ]), array([0.94222052, 0.89281192, 2.01225539, 0.40870975])] 
-#Model 2 metrics : [array([0.89917227, 0.8242151 , 1.39637837, 0.37090771]), array([0.89106216, 0.80497843, 1.87506282, 0.78417012]), array([0.93874325, 0.88827024, 3.44877077, 1.02522459])] 
-#Overall average metrics : [array([0.9015892 , 0.82754868, 1.35130004, 0.38303115]), array([0.89018199, 0.80366076, 1.51081644, 0.59808701]), array([0.94048189, 0.89054108, 2.73051308, 0.71696717])]
-#Average overall metric: [0.91075102 0.84058351 1.86420985 0.56602844]
-import multiprocessing
-multiprocessing.set_start_method('spawn', force=True)
-
-
 import argparse
 import logging
 import os
