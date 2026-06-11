@@ -1,0 +1,12 @@
+numpy
+torch
+torchvision
+tensorboardX
+tqdm
+scipy
+h5py
+medpy
+opencv-python
+Pillow
+matplotlib
+scikit-image

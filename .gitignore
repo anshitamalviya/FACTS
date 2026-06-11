@@ -1,0 +1,21 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Training outputs
+model/
+logs/
+runs/
+*.pth
+*.pt
+*.ckpt
+
+# Real processed ACDC data can be large/private.
+data/ACDC/data/**/*.h5
+!example_data/**/*.h5
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
