@@ -102,10 +102,6 @@ These boundary memberships weight the loss around class interfaces and are used 
 
 The FACTS framework is designed for 2D medical image segmentation and can be adapted to additional modalities. In our broader experiments, the framework was also prepared for ISIC skin lesion segmentation and ultrasound segmentation. This repository currently provides the ACDC release; modality-specific code and dataset instructions can be added in separate folders when released.
 
-## Citation
-
-This repository is being prepared for a manuscript submission to **IEEE Transactions on Medical Imaging (TMI)**. Citation information will be added after the paper is available.
-
 ## Acknowledgements
 
 This implementation builds on common semi-supervised segmentation components, including Cross Pseudo Supervision and UNet-style segmentation networks. Please also follow the dataset licenses and citation requirements for ACDC or any other dataset used with this code.
